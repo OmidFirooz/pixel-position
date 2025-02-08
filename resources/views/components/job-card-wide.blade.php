@@ -11,6 +11,6 @@
     </div>
     
     <div>
-        <x-tag size="small">Tag</x-tag>
+        <x-tag>Tag</x-tag>
     </div>
 </x-panel>
