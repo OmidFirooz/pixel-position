@@ -10,7 +10,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-black text-white font-hanken-grotest">
+<body class="bg-black text-white font-hanken-grotest pb-20">
     <div class="px-10">
         <nav class="flex justify-between item-center py-4 border-b border-white/10">
             <div>
@@ -26,15 +26,30 @@
                 <a href="#">Companies</a>
             </div>
 
-            <div>
-                Post a Job
+            @auth
+            <div class="space-x-6 font-bold flex">
+                <a href="/jobs/create">Post a Job</a>
+
+                <form method="POST" action="/logout">
+                    @csrf
+                    @method('DELETE')
+                    <button>Log Out</button>
+                </form>
             </div>
+            @endauth
+
+            @guest
+            <div class="space-x-6 font-bold">
+                <a href="/register">Sign Up</a>
+                <a href="/login">Log In</a>
+            </div>
+            @endguest
         </nav>
         
         <main class="mt-10 max-w-[986px] mx-auto">
             {{ $slot }}
         </main>
-    </dev>
+    </div>
 
 
     <script src="js/script.js"></script>
